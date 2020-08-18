@@ -15,7 +15,7 @@ const DateHourPicker = () => {
     //35
     let dataNumberStartA = parseInt(dataStartA, 10);
     let dataNumberStartB = parseInt(dataStartB, 10);
-    console.log(dataNumberStartA, dataNumberStartB);
+    console.log('hora llegada', dataNumberStartA, 'minuto' , dataNumberStartB);
   
     const [finishDate, setFinishDate] = useState(new Date());
     console.log(finishDate.toString());
@@ -29,7 +29,21 @@ const DateHourPicker = () => {
     //35
     let dataNumberFinishA = parseInt(dataFinishA, 10);
     let dataNumberFinishB = parseInt(dataFinishB, 10);
-    console.log(dataNumberFinishA, dataNumberFinishB);
+    console.log('hora salida',dataNumberFinishA, 'minuto', dataNumberFinishB);
+    
+    //const [sumTime] = useState(sumTime);
+      let min = dataNumberFinishB - dataNumberStartB;
+      let hours = dataNumberFinishA - dataNumberStartA;
+
+      if (dataNumberFinishA < dataNumberStartA ) {
+        alert('seleccionaste mal la hora')
+      }
+
+      if (dataNumberFinishB < dataNumberStartB ) {
+        alert('seleccionaste mal los minutos')
+      }
+      console.log('hours ' + hours + 'min '+ min );
+
     
     return (
         <Fragment>
@@ -47,6 +61,7 @@ const DateHourPicker = () => {
       dateFormat="MM/dd/yyyy h:mm aa"
       showTimeInput
     />
+    
     </Fragment>
   
     );
