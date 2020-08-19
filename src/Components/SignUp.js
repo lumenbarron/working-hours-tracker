@@ -1,22 +1,59 @@
-import React, { useCallback } from 'react';
-import { withRouter  } from 'react-router';
-import firebaseConfig from '../firebase';
+import React, { Component, useCallback, useContext } from "react";
+import app from "../firebase";
 
+export default class SignUp extends Component {
+  state = {
+    email: "",
+    password: "",
+  };
+  signUp = (event) => {
+    event.preventDefault();
+    app
+      .auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then((user) => {
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-export default function SignUp({history}) {
-    const handleSignUp = useCallback( async (event) =>{
-        event.preventDefault();
-        const { email , password } = event.target.elements;
-        try {
-            await firebaseConfig.auth().createUserWithEmailAndPassword(email.value, password.value);
-            history.push('/')
-        } catch (error) {
-            alert(error)
-        }
-    })
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+  render() {
     return (
-        <div>
-            
-        </div>
-    )
+      <div>
+        <h1>Sign Up</h1>
+        <form>
+          <label>
+            Email
+            <input
+              name="email"
+              type="email"
+              placeholder="Email"
+              onChange={this.handleChange}
+              value={this.state.email}
+            />
+          </label>
+          <label>
+            Password
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              onChange={this.handleChange}
+              value={this.state.password}
+            />
+          </label>
+          <button type="submit" onClick={this.signUp}>
+            Sign Up
+          </button>
+        </form>
+      </div>
+    );
+  }
 }

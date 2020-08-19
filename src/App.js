@@ -1,42 +1,63 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  NavLink
-} from "react-router-dom";
-import './App.css';
-import DateHourPicker from './Components/DateHourPicker';
-import Home from './Components/Home';
-import {AuthProvider} from './Components/Auth';
-import PrivateRoute from './Components/PrivateRoute';
+import React, { Component } from "react";
+import DateHourPicker from "./Components/DateHourPicker";
+import Login from "./Components/Login";
+import SignUp from "./Components/SignUp";
+import app from "./firebase";
+import "./App.css";
 
-function App() {
-  return (
-    <AuthProvider >
-    <Router>
-    <div className="container mt-5">
-    {/*   <div className="btn-group">
-        <Link to="/" className="btn btn-dark">Inicio</Link>
-        <Link to="/bla" className="btn btn-dark">Bla bla bla</Link>
-        <NavLink to="/users" className="btn btn-dark" activeClassName="active">Users</NavLink>
+export default class App extends Component {
+  state = {
+    user: {},
+  };
+  componentDidMount() {
+    this.authLister();
+  }
+
+  authLister = () => {
+    app.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      } else {
+        this.setState({ user: null });
+      }
+    });
+  };
+  render() {
+    return (
+      <div>
+        <h1>
+          {this.state.user ? (
+            <div>
+              <DateHourPicker />
+            </div>
+          ) : (
+            <div>
+              <Login /> <SignUp />
+            </div>
+          )}
+        </h1>
       </div>
-      <hr /> */}
-      <Switch><PrivateRoute path="/" exact>
-
-          <Home />
-
-        </PrivateRoute>
-        <Route path="/track">
-        <DateHourPicker />
-        </Route>
-      </Switch>
-    </div>
-  </Router>
-  </AuthProvider>
-
-  );
+    );
+  }
 }
 
-export default App;
+// <AuthProvider>
+// <Router>
+//   <div className="container mt-5">
+//     <Switch>
+//       {/* <PrivateRoute path="/" exact>
+//         <Home />
+//       </PrivateRoute> */}
+//       <Route path="/track">
+
+//       </Route>
+//       {/* <Route path="/track">
+//         <Login />
+//       </Route>
+//       <Route path="/track">
+//         <SignUp />
+//       </Route> */}
+//     </Switch>
+//   </div>
+// </Router>
+// </AuthProvider>

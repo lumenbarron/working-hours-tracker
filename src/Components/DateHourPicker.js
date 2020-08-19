@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react";
 import DatePicker from "react-datepicker";
 import GetDateHour from "./GetDateHour";
-import { firebase } from "../firebase";
+import app  from "../firebase";
 import "react-datepicker/dist/react-datepicker.css";
 
 const DateHourPicker = () => {
@@ -76,7 +76,7 @@ console.log(startHourUser);
 
   const addData = (e) => {
     e.preventDefault();
-    firebase
+    app
       .firestore()
       .collection("working-lucy")
       .add({
@@ -93,7 +93,7 @@ timeMin : min
 
   const deleteData = (id) => {
     console.log('eliminado');
-    firebase.firestore().collection('working-lucy').doc(id).delete()
+    app.firestore().collection('working-lucy').doc(id).delete()
 }
 
   return (

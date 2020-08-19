@@ -1,5 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { firebase } from "../firebase";
+import  app  from "../firebase";
+import SignOut from "./SignOutButton";
+
 
 export default function GetDateHour(props) {
 
@@ -13,8 +15,8 @@ export default function GetDateHour(props) {
     }, []);
   
     const getData = () => {
-      const unsubscribe = firebase;
-      firebase
+      const unsubscribe = app;
+      app
         .firestore()
         .collection("working-lucy")
         .onSnapshot((snapshot) => {
@@ -69,6 +71,8 @@ export default function GetDateHour(props) {
           </div>
         </div>
       </div>
+
+      <SignOut />
 </Fragment>
     )
 }
