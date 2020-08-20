@@ -10,12 +10,12 @@ const DateHourPicker = () => {
   const [type, setType] = useState("");
 
   //Data for arriving
-  let dataStart = startDate.toString(); //Mon Aug 17 2020 11:56:07 GMT-0500 (hora de verano central)
+  let dataStart = startDate.toString(); console.log(dataStart); //Mon Aug 17 2020 11:56:07 GMT-0500 (hora de verano central)
   let dateUser = dataStart.substring(0, 15); //Mon Aug 17 2020
   let startHourUser = dataStart.substring(16, 21); //11:56
 
   //Data for Exit
-  let dataFinish = finishDate.toString(); //Mon Aug 17 2020 11:59:07 GMT-0500 (hora de verano central)
+  let dataFinish = finishDate.toString();console.log(dataFinish); //Mon Aug 17 2020 11:59:07 GMT-0500 (hora de verano central)
   let finishHourUser = dataFinish.substring(16, 21); //11:59
 
   //For Calculate time---Arriving
@@ -37,6 +37,7 @@ const DateHourPicker = () => {
   //hora salida  11:59
 
   let min = minuteFinish - minuteStart; //59 - 56 = 3
+  //let min = (60 - minuteFinish) + (60 - minuteStart); //(60-59) - (60- 56) = 3
   let hours = hourFinish - hourStart; //11 - 11 = 0 * 60 = 60
   let hoursToMin = hours * 60; //11 - 11 = 0 * 60 = 60
 
@@ -46,11 +47,27 @@ const DateHourPicker = () => {
     alert("your hour exit it's incorrect");
   }
 
-  if (minuteFinish < minuteStart && hourStart < hourFinish) {
-    //4:47 - 6:20
-    min = minuteFinish + (60 - minuteStart);
+  if (hourStart < hourFinish && minuteFinish < minuteStart ) {
+    //4:47 - 6:20 
+    min = (60 - minuteStart) + minuteFinish ; //(60-47)//13 + 20 = 33
     hours = hourFinish - (hourStart + 1);
     hoursToMin = hours * 60;
+  }
+
+  if (hourStart < hourFinish && minuteFinish > minuteStart ) {
+    //9:14 - 12:52 
+    min = (60 - minuteStart) + minuteFinish 
+    console.log(min);
+    if (min >= 60) {
+      hourFinish++;
+      console.log(hourFinish);
+      min = min - 60
+      console.log(min, 'min2');
+    } //(60-14)//46 + 52 = 98
+    hours = hourFinish - (hourStart + 1);
+    console.log('hours', hours);
+    hoursToMin = hours * 60;
+    console.log('hourstomin', hours);
   }
 
   if (minuteFinish > minuteStart && hourStart < hourFinish) {
@@ -88,6 +105,7 @@ const DateHourPicker = () => {
     <Fragment>
       <form className="mt-5" onSubmit={addData}>
         <h1>Add data</h1>
+        <h2>Arriving time</h2>
         <DatePicker
           selected={startDate}
           onChange={(date) => setStartDate(date)}
@@ -95,6 +113,7 @@ const DateHourPicker = () => {
           dateFormat="MM/dd/yyyy h:mm aa"
           showTimeInput
         />
+        <h2>Exit time</h2>
         <DatePicker
           selected={finishDate}
           onChange={(date) => setFinishDate(date)}

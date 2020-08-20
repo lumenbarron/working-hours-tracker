@@ -1,10 +1,9 @@
 import React, { Fragment, useState, useEffect } from "react";
-import  app  from "../firebase";
+import app from "../firebase";
 import SignOut from "./SignOutButton";
 
 
 export default function GetDateHour(props) {
-
     const [data, setData] = useState([]);
     const [timeTotal, setTimeTotal] = useState();
 
