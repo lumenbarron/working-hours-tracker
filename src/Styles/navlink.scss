@@ -1,0 +1,13 @@
+@import './global-styles.scss';
+
+.logo-container {
+    @include flexAll();
+}
+
+.logo-time {
+    background-image: url(../Images/logo-time.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 100px;
+}

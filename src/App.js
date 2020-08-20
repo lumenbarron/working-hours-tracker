@@ -1,14 +1,12 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import DateHourPicker from "./Components/DateHourPicker";
+import Register from "./Components/Register";
+import NavLinkHome from './Components/NavLink';
+import Home from "./Components/Home";
 import app from "./firebase";
 import "./App.css";
-import Register from "./Components/Register";
-import Home from "./Components/Home";
+
 
 export default class App extends Component {
   state = {
@@ -37,6 +35,7 @@ export default class App extends Component {
             </div>
           ) : (
             <div>
+              <NavLinkHome />
               <Switch>
                 <Route path="/" exact>
                   <Home />
