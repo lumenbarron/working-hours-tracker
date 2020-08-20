@@ -1,4 +1,4 @@
-import React, { Component, useCallback, useContext } from "react";
+import React, { Component} from "react";
 import app from "../firebase";
 
 export default class SignOut extends Component {
