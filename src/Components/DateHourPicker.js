@@ -48,15 +48,20 @@ const DateHourPicker = () => {
   }
 
   if (hourStart < hourFinish && minuteFinish < minuteStart ) {
-    //4:47 - 6:20 
-    min = (60 - minuteStart) + minuteFinish ; //(60-47)//13 + 20 = 33
+    //4:47 - 6:52 
+    min = (60 - minuteStart) + minuteFinish ; //(60-47)//13 + 52 = 65
+    if (min >= 60) {
+      hourFinish++;
+      console.log(hourFinish);
+      min = min - 60 ; //65-60=5
+    } 
     hours = hourFinish - (hourStart + 1);
     hoursToMin = hours * 60;
   }
 
   if (hourStart < hourFinish && minuteFinish > minuteStart ) {
     //9:14 - 12:52 
-    min = (60 - minuteStart) + minuteFinish 
+    min = (60 - minuteStart) + minuteFinish; //(60)
     console.log(min);
     if (min >= 60) {
       hourFinish++;
@@ -65,16 +70,17 @@ const DateHourPicker = () => {
       console.log(min, 'min2');
     } //(60-14)//46 + 52 = 98
     hours = hourFinish - (hourStart + 1);
+    console.log(hourFinish, 'hourfinish 2');
     console.log('hours', hours);
     hoursToMin = hours * 60;
     console.log('hourstomin', hours);
   }
 
-  if (minuteFinish > minuteStart && hourStart < hourFinish) {
-    //10:59 > 11:58 = 59 min
-    min = (hourFinish - hourStart) * 60 - (minuteFinish - minuteStart);
-    hours = 0;
-  }
+  // if (minuteFinish > minuteStart && hourStart < hourFinish) {
+  //   //10:59 > 11:58 = 59 min
+  //   min = (hourFinish - hourStart) * 60 - (minuteFinish - minuteStart);
+  //   hours = 0;
+  // }
 
   let amountTime = min + hoursToMin; //63
 
