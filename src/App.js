@@ -1,9 +1,14 @@
 import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 import DateHourPicker from "./Components/DateHourPicker";
-import Login from "./Components/Login";
-import SignUp from "./Components/SignUp";
 import app from "./firebase";
 import "./App.css";
+import Register from "./Components/Register";
+import Home from "./Components/Home";
 
 export default class App extends Component {
   state = {
@@ -24,40 +29,26 @@ export default class App extends Component {
   };
   render() {
     return (
-      <div>
-        <h1>
+      <Router>
+        <div>
           {this.state.user ? (
             <div>
               <DateHourPicker />
             </div>
           ) : (
             <div>
-              <Login /> <SignUp />
+              <Switch>
+                <Route path="/" exact>
+                  <Home />
+                </Route>
+                <Route path="/register">
+                  <Register />
+                </Route>
+              </Switch>
             </div>
           )}
-        </h1>
-      </div>
+        </div>
+      </Router>
     );
   }
 }
-
-// <AuthProvider>
-// <Router>
-//   <div className="container mt-5">
-//     <Switch>
-//       {/* <PrivateRoute path="/" exact>
-//         <Home />
-//       </PrivateRoute> */}
-//       <Route path="/track">
-
-//       </Route>
-//       {/* <Route path="/track">
-//         <Login />
-//       </Route>
-//       <Route path="/track">
-//         <SignUp />
-//       </Route> */}
-//     </Switch>
-//   </div>
-// </Router>
-// </AuthProvider>

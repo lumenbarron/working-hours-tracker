@@ -1,4 +1,4 @@
-import React, { Component, useCallback, useContext } from "react";
+import React, { Component } from "react";
 import app from "../firebase";
 
 export default class Login extends Component {
@@ -13,9 +13,11 @@ export default class Login extends Component {
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((user) => {
         console.log(user);
+        alert('authenticated user')
       })
       .catch((error) => {
         console.log(error);
+        alert(error)
       });
   };
 

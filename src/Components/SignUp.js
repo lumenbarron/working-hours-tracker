@@ -13,9 +13,11 @@ export default class SignUp extends Component {
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((user) => {
         console.log(user);
+        alert('Congratulations! You create your account')
       })
       .catch((error) => {
         console.log(error);
+        alert(error)
       });
   };
 
