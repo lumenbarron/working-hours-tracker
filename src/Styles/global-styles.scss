@@ -1,16 +1,21 @@
 //Colors
 $primaryColor: #3662C1;
-$secondaryColor : #93B3F4;
+$secondaryColor : #769ce7;
 $buttonColors : #FA7269;
 
+
 //Media query
-$break-small: 320px;
+$break-small: 426px;
 $break-large: 1200px;
 
 @mixin flexAll {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.flex-all {
+    @include flexAll();
 }
 
 @mixin flexDirection ($direction) {

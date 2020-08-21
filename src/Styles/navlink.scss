@@ -1,13 +1,28 @@
 @import './global-styles.scss';
 
-.logo-container {
-    @include flexAll();
-}
-
 .logo-time {
     background-image: url(../Images/logo-time.png);
     background-size: contain;
     background-repeat: no-repeat;
     width: 500px;
     height: 100px;
+}
+
+.banner-web{
+    background-image: url(../Images/banner-web.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 1400px;
+    height: 500px;
+}
+
+@media only screen and (max-width: $break-small) {
+    .logo-time {
+        width: 280px;
+        height: 60px;
+    }
+    .banner-web{
+        background-image: url(../Images/banner-movil.png);
+        margin-top: 3rem;
+    }
 }

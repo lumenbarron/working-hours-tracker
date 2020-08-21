@@ -1,0 +1,55 @@
+@import './global-styles.scss';
+
+.container-home{
+    margin-top: 5rem;
+}
+
+.title-home{
+    font-family: 'Russo One', sans-serif;
+    font-size: 3rem;
+    color: $primaryColor;   
+}
+
+.parraf-home{
+    color: $secondaryColor
+}
+
+.button-home{
+    background-color: $buttonColors;
+    width: 300px;
+    height: 50px;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    //justify-content: center;
+    padding-left: 30px;
+}
+
+@media only screen and (max-width: $break-small) {
+    .container-home{
+        margin-top: 1rem;
+    }
+
+    .title-home{
+        font-size: 1.5rem;
+    }
+    .parraf-home{
+        font-size: 1rem;
+    }
+
+    .button-home{
+        width: 150px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .text-container{
+        text-align: center;
+        align-items: center;
+        padding-left: 15px;
+    }
+}

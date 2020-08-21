@@ -5,8 +5,6 @@ import Register from "./Components/Register";
 import NavLinkHome from './Components/NavLink';
 import Home from "./Components/Home";
 import app from "./firebase";
-import "./App.css";
-
 
 export default class App extends Component {
   state = {
