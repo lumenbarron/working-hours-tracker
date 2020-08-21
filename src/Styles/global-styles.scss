@@ -1,6 +1,7 @@
 //Colors
 $primaryColor: #3662C1;
 $secondaryColor : #769ce7;
+$transitionColor : #F1F6FF;
 $buttonColors : #FA7269;
 
 
@@ -23,9 +24,12 @@ $break-large: 1200px;
     justify-content: center;
     align-items: center;
     flex-direction: ($direction);
+    text-align: center;
 }
 
-// @include flexAll();
+.flex-column{
+@include flexDirection(column);
+}
 
 @media only screen and (max-width: $break-small) {
 
@@ -33,4 +37,5 @@ $break-large: 1200px;
 
   @media only screen and (min-width: $break-large) {
   }
+
   
