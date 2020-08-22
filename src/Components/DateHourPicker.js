@@ -7,20 +7,19 @@ import "react-datepicker/dist/react-datepicker.css";
 import "../Styles/date-hour-picker.scss";
 import swal from "sweetalert";
 
-const DateHourPicker = () => {
+const DateHourPicker = (props) => {
+  let userId = props.userId
   const [startDate, setStartDate] = useState(new Date());
   const [finishDate, setFinishDate] = useState(new Date());
   const [type, setType] = useState("");
 
   //Data for arriving
-  let dataStart = startDate.toString();
-  console.log(dataStart); //Mon Aug 17 2020 11:56:07 GMT-0500 (hora de verano central)
+  let dataStart = startDate.toString(); //Mon Aug 17 2020 11:56:07 GMT-0500 (hora de verano central)
   let dateUser = dataStart.substring(0, 15); //Mon Aug 17 2020
   let startHourUser = dataStart.substring(16, 21); //11:56
 
   //Data for Exit
-  let dataFinish = finishDate.toString();
-  console.log(dataFinish); //Mon Aug 17 2020 11:59:07 GMT-0500 (hora de verano central)
+  let dataFinish = finishDate.toString();//Mon Aug 17 2020 11:59:07 GMT-0500 (hora de verano central)
   let finishHourUser = dataFinish.substring(16, 21); //11:59
 
   //For Calculate time---Arriving
@@ -38,11 +37,10 @@ const DateHourPicker = () => {
   let dataFinishB = dataFinish.substring(19, 21);
   let minuteFinish = parseInt(dataFinishB, 10); //59
 
-  console.log("hora salida", hourFinish, "minuto", minuteFinish);
+  console.log("exit time", hourFinish, "minuto", minuteFinish);
   //hora salida  11:59
 
   let min = minuteFinish - minuteStart; //59 - 56 = 3
-  //let min = (60 - minuteFinish) + (60 - minuteStart); //(60-59) - (60- 56) = 3
   let hours = hourFinish - hourStart; //11 - 11 = 0 * 60 = 60
   let hoursToMin = hours * 60; //11 - 11 = 0 * 60 = 60
 
@@ -88,6 +86,7 @@ const DateHourPicker = () => {
       .collection("working-lucy")
       .add({
         date: dateUser,
+        idUser : userId,
         startHour: startHourUser,
         finishHour: finishHourUser,
         type: type,
@@ -149,7 +148,7 @@ const DateHourPicker = () => {
             </form>
           </div>
           <div className="col-12 col-lg-7">
-            <GetDateHour deleteData={deleteData} />
+            <GetDateHour deleteData={deleteData} userId={userId} />
           </div>
         </div>
       </div>

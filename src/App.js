@@ -9,6 +9,7 @@ import app from "./firebase";
 export default class App extends Component {
   state = {
     user: {},
+    userId : ''
   };
   componentDidMount() {
     this.authLister();
@@ -17,9 +18,11 @@ export default class App extends Component {
   authLister = () => {
     app.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ user });
+        this.setState({ user : user, userId : user.uid });
+        console.log(user.uid);
+        // console.log(user.displayName);
       } else {
-        this.setState({ user: null });
+        this.setState({ user: null, userId : '' });
       }
     });
   };
@@ -29,7 +32,7 @@ export default class App extends Component {
         <div>
           {this.state.user ? (
             <div>
-              <DateHourPicker />
+              <DateHourPicker userId={this.state.userId}/>
             </div>
           ) : (
             <div>
