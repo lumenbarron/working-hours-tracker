@@ -8,7 +8,7 @@ export default function Register() {
   return (
       <div className="container-fluid container-home">
         <div className="row">
-          <div className="col-12 col-lg-6 flex-all login-bkg">
+          <div className="col-12 col-lg-6 flex-all">
             <Login />
           </div>
           <div className="col-12 col-lg-6 flex-all">

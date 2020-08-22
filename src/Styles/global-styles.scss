@@ -31,6 +31,20 @@ $break-large: 1200px;
 @include flexDirection(column);
 }
 
+.title-home{
+    font-family: 'Russo One', sans-serif;
+    font-size: 3rem;
+    color: $primaryColor;   
+}
+
+@mixin buttons ($color, $width, $height){
+    background-color: ($color);
+    width: ($width);
+    height: ($height);
+    color: white;
+    font-size: 1.5rem;
+}
+
 @media only screen and (max-width: $break-small) {
 
   }

@@ -4,22 +4,12 @@
     margin-top: 5rem;
 }
 
-.title-home{
-    font-family: 'Russo One', sans-serif;
-    font-size: 3rem;
-    color: $primaryColor;   
-}
-
 .parraf-home{
     color: $secondaryColor
 }
 
 .button-home{
-    background-color: $buttonColors;
-    width: 300px;
-    height: 50px;
-    color: white;
-    font-size: 1.5rem;
+    @include buttons ($buttonColors, 300px , 50px)
 }
 
 .text-container{
