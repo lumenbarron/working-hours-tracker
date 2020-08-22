@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import app from "../firebase";
+import swal from "sweetalert";
 
 export default class SignUp extends Component {
   state = {
@@ -13,11 +14,15 @@ export default class SignUp extends Component {
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((user) => {
         console.log(user);
-        alert('Congratulations! You create your account')
+        swal("Congratulations!", "You create your account", "success");
       })
       .catch((error) => {
         console.log(error);
-        alert(error)
+        swal(
+          "What happend?",
+          "Check if the email address has right formatted or if your password is more than six characters",
+          "error"
+        );
       });
   };
 
@@ -28,30 +33,35 @@ export default class SignUp extends Component {
   };
   render() {
     return (
-      <div className='login-container'>
+      <div className="login-container">
         <h1 className="title-home mt-2">Sign Up</h1>
-        <form className='form-group'>
-          <label className='label-input mt-3'>
+        <form className="form-group">
+          <label className="label-input mt-3">
             Email
             <input
-              className='form-input'
+              className="form-input"
               name="email"
               type="email"
               onChange={this.handleChange}
               value={this.state.email}
             />
           </label>
-          <label className='label-input mt-3'>
+          <label className="label-input mt-3">
             Password
             <input
-              className='form-input'
+              className="form-input"
               name="password"
               type="password"
               onChange={this.handleChange}
               value={this.state.password}
             />
           </label>
-          <button type="submit" onClick={this.signUp} className='btn button-register mt-3'>
+          <p className="p-password">*six characters or more</p>
+          <button
+            type="submit"
+            onClick={this.signUp}
+            className="btn button-register mt-3"
+          >
             Sign Up
           </button>
         </form>
