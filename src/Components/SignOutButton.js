@@ -1,4 +1,4 @@
-import React, { Component} from "react";
+import React, { Component } from "react";
 import app from "../firebase";
 
 export default class SignOut extends Component {
@@ -17,7 +17,11 @@ export default class SignOut extends Component {
 
   render() {
     return (
-      <button type="submit" onClick={this.signOut}>
+      <button
+        className="btn button-sign-out mt-5"
+        type="submit"
+        onClick={this.signOut}
+      >
         Sign Out
       </button>
     );

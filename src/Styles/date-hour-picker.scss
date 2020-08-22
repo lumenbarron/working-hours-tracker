@@ -2,7 +2,7 @@
 
 .title-time{
     font-family: 'Russo One', sans-serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: $primaryColor;
     @include flexDirection(column);
 }
@@ -15,10 +15,10 @@
 }
 
 .select-action{
-    width: 410px;
+    width: 370px;
     font-size: 1.8rem;
 }
 
 .button-time{
-    @include buttons ($buttonColors, 400px , 50px)
+    @include buttons ($buttonColors, 360px , 50px)
 }

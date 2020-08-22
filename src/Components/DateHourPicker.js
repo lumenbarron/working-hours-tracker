@@ -108,10 +108,10 @@ const DateHourPicker = () => {
       <NavLinkHome />
       <div className="container-fluid container-home">
         <div className="row">
-          <div className="col-12 col-lg-6">
+          <div className="col-12 col-lg-5">
             <form className="mt-5 flex-column" onSubmit={addData}>
               <label className="title-time">
-                Arriving time
+                Arriving hour
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
@@ -122,7 +122,7 @@ const DateHourPicker = () => {
                 />
               </label>
               <label className="title-time mt-3">
-                Exit time
+                Exit hour
                 <DatePicker
                   selected={finishDate}
                   onChange={(date) => setFinishDate(date)}
@@ -145,10 +145,10 @@ const DateHourPicker = () => {
                   <option value="break">Break Time</option>
                 </select>
               </label>
-              <button className="btn button-home mt-3">Send</button>
+              <button className="btn button-time mt-3">Send</button>
             </form>
           </div>
-          <div className="col-12 col-lg-6">
+          <div className="col-12 col-lg-7">
             <GetDateHour deleteData={deleteData} />
           </div>
         </div>
