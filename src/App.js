@@ -1,13 +1,15 @@
 import React, { Component } from "react";
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import DateHourPicker from "./Components/DateHourPicker";
-import Login from "./Components/Login";
-import SignUp from "./Components/SignUp";
+import Register from "./Components/Register";
+import NavLinkHome from './Components/NavLink';
+import Home from "./Components/Home";
 import app from "./firebase";
-import "./App.css";
 
 export default class App extends Component {
   state = {
     user: {},
+    userId : ''
   };
   componentDidMount() {
     this.authLister();
@@ -16,48 +18,35 @@ export default class App extends Component {
   authLister = () => {
     app.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ user });
+        this.setState({ user : user, userId : user.uid });
       } else {
-        this.setState({ user: null });
+        this.setState({ user: null, userId : '' });
       }
     });
   };
   render() {
     return (
-      <div>
-        <h1>
+      <Router>
+        <div>
           {this.state.user ? (
             <div>
-              <DateHourPicker />
+              <DateHourPicker userId={this.state.userId}/>
             </div>
           ) : (
             <div>
-              <Login /> <SignUp />
+              <NavLinkHome />
+              <Switch>
+                <Route path="/" exact>
+                  <Home />
+                </Route>
+                <Route path="/register">
+                  <Register />
+                </Route>
+              </Switch>
             </div>
           )}
-        </h1>
-      </div>
+        </div>
+      </Router>
     );
   }
 }
-
-// <AuthProvider>
-// <Router>
-//   <div className="container mt-5">
-//     <Switch>
-//       {/* <PrivateRoute path="/" exact>
-//         <Home />
-//       </PrivateRoute> */}
-//       <Route path="/track">
-
-//       </Route>
-//       {/* <Route path="/track">
-//         <Login />
-//       </Route>
-//       <Route path="/track">
-//         <SignUp />
-//       </Route> */}
-//     </Switch>
-//   </div>
-// </Router>
-// </AuthProvider>

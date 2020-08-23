@@ -1,11 +1,14 @@
-import React, { Component, useCallback, useContext } from "react";
+import React, { Component } from "react";
 import app from "../firebase";
+import swal from "sweetalert";
 
 export default class SignUp extends Component {
   state = {
+    userName: "",
     email: "",
-    password: "",
+    password: ""
   };
+
   signUp = (event) => {
     event.preventDefault();
     app
@@ -13,11 +16,33 @@ export default class SignUp extends Component {
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((user) => {
         console.log(user);
+        swal("Congratulations!", "You create your account", "success");
+        this.saveData();
       })
       .catch((error) => {
         console.log(error);
+        swal(
+          "What happend?",
+          "Check if the email address has right formatted or if your password is more than six characters",
+          "error"
+        );
       });
   };
+
+  saveData = () => {
+    let user = app.auth().currentUser;
+    if (user) {
+      app.firestore().collection("users").doc(user.uid).set({
+        userName : this.state.userName,
+        email : this.state.email,
+        password : this.state.password,
+        id : user.uid
+      }).then (() => {
+        console.log("Document successfully written!");
+      }).catch ( (error) => console.log(error))
+    }
+    
+  }
 
   handleChange = (e) => {
     this.setState({
@@ -26,30 +51,45 @@ export default class SignUp extends Component {
   };
   render() {
     return (
-      <div>
-        <h1>Sign Up</h1>
-        <form>
-          <label>
+      <div className="login-container">
+        <h1 className="title-home mt-2">Sign Up</h1>
+        <form className="form-group">
+        <label className="label-input mt-3">
+            Name
+            <input
+              className="form-input"
+              name="userName"
+              type="email"
+              onChange={this.handleChange}
+              value={this.state.userName}
+            />
+          </label>
+          <label className="label-input mt-3">
             Email
             <input
+              className="form-input"
               name="email"
               type="email"
-              placeholder="Email"
               onChange={this.handleChange}
               value={this.state.email}
             />
           </label>
-          <label>
+          <label className="label-input mt-3">
             Password
             <input
+              className="form-input"
               name="password"
               type="password"
-              placeholder="Password"
               onChange={this.handleChange}
               value={this.state.password}
             />
           </label>
-          <button type="submit" onClick={this.signUp}>
+          <p className="p-password">*six characters or more</p>
+          <button
+            type="submit"
+            onClick={this.signUp}
+            className="btn button-register mt-3"
+          >
             Sign Up
           </button>
         </form>

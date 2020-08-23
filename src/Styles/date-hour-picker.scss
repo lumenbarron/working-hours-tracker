@@ -1,0 +1,71 @@
+@import './global-styles.scss';
+
+.title-container{
+    @include flexDirection(row);
+}
+
+.title-expected {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: $primaryColor; 
+}
+
+.title-time{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: $buttonColors; 
+}
+
+.title-tracker{
+    @include titles($primaryColor, 2rem);
+    @include flexDirection(column);
+}
+
+.date-input{
+    border-radius: 35px;
+    border-color: $primaryColor;
+    border-style: solid;
+    padding: .5rem;
+}
+
+.select-action{
+    width: 370px;
+    font-size: 1.8rem;
+}
+
+.button-time{
+    @include buttons ($buttonColors, 360px , 50px, 1.5rem)
+}
+
+.margin-top{
+    margin-top: 3rem;
+}
+
+@media only screen and (max-width: $break-small) {
+    .margin-top{
+        margin-top: 1rem;
+    }
+
+    .title-tracker{
+        @include titles($primaryColor, 1.5rem);
+    }
+
+    .select-action{
+        width: 310px;
+        font-size: 1.5rem;
+    }
+
+    
+.button-time{
+    @include buttons ($buttonColors, 300px , 40px, 1.2rem);
+    margin-bottom: 2rem;
+}
+
+.title-time{
+    font-size: 1rem;
+}
+
+.title-expected {
+    font-size: 1rem;
+}
+}

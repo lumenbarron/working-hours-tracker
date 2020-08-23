@@ -1,0 +1,25 @@
+@import './global-styles.scss';
+
+.button-total{
+    @include buttons ($secondaryColor, 280px , 50px, 1.5rem)
+}
+
+.button-sign-out{
+    @include buttons ($buttonColors, 180px , 50px, 1.5rem)
+}
+
+.sign-out-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media only screen and (max-width: $break-small) {
+
+    .button-total{
+        @include buttons ($secondaryColor, 280px , 40px, 1.2rem);
+    }
+
+    .button-sign-out{
+        @include buttons ($buttonColors, 180px , 40px, 1.2rem);
+    }
+}

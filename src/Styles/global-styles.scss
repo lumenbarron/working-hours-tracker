@@ -1,0 +1,51 @@
+//Colors
+$primaryColor: #3662C1;
+$secondaryColor : #769ce7;
+$transitionColor : #F1F6FF;
+$buttonColors : #FA7269;
+
+
+//Media query
+$break-small: 700px;
+$break-large: 1200px;
+
+@mixin flexAll {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-all {
+    @include flexAll();
+}
+
+@mixin flexDirection ($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: ($direction);
+    text-align: center;
+}
+
+.flex-column{
+@include flexDirection(column);
+}
+
+@mixin titles ($color, $size){
+    font-family: 'Russo One', sans-serif;
+    font-size: $size;
+    color: $color; 
+}
+
+.title-home{
+    @include titles($primaryColor, 3rem)
+}
+
+@mixin buttons ($color, $width, $height, $size){
+    background-color: ($color);
+    width: ($width);
+    height: ($height);
+    color: white;
+    font-size: $size;
+}
+  
