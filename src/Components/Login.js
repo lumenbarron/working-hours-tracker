@@ -4,6 +4,7 @@ import swal from "sweetalert";
 
 export default class Login extends Component {
   state = {
+    userName: "",
     email: "",
     password: "",
   };
@@ -37,6 +38,16 @@ export default class Login extends Component {
       <div className="login-container">
         <h1 className="title-home mt-2">Log in</h1>
         <form className="form-group">
+        <label className="label-input mt-3">
+            Name
+            <input
+              className="form-input"
+              name="userName"
+              type="email"
+              onChange={this.handleChange}
+              value={this.state.userName}
+            />
+          </label>
           <label className="label-input mt-3">
             Email
             <input

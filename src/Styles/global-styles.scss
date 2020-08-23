@@ -31,10 +31,14 @@ $break-large: 1200px;
 @include flexDirection(column);
 }
 
-.title-home{
+@mixin titles ($color, $size){
     font-family: 'Russo One', sans-serif;
-    font-size: 3rem;
-    color: $primaryColor;   
+    font-size: $size;
+    color: $color; 
+}
+
+.title-home{
+    @include titles($primaryColor, 3rem)
 }
 
 @mixin buttons ($color, $width, $height){

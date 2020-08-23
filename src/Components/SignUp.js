@@ -27,7 +27,6 @@ export default class SignUp extends Component {
           "error"
         );
       });
-      
   };
 
   saveData = () => {

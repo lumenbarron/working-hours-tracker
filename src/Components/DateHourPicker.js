@@ -54,6 +54,15 @@ const DateHourPicker = (props) => {
     );
   }
 
+  if (hourFinish == hourStart && minuteFinish < minuteStart ) {
+    //18 < 16 because you can't finish after start
+    swal(
+      "Oops?",
+      "Check if your exit time it's correct",
+      "error"
+    );
+  }
+
   if (hourStart < hourFinish && minuteFinish < minuteStart) {
     //4:47 - 6:52
     min = 60 - minuteStart + minuteFinish; //(60-47)//13 + 52 = 65
@@ -109,7 +118,7 @@ const DateHourPicker = (props) => {
         <div className="row">
           <div className="col-12 col-lg-5">
             <form className="mt-5 flex-column" onSubmit={addData}>
-              <label className="title-time">
+              <label className="title-tracker">
                 Arriving hour
                 <DatePicker
                   selected={startDate}
@@ -120,7 +129,7 @@ const DateHourPicker = (props) => {
                   className="date-input"
                 />
               </label>
-              <label className="title-time mt-3">
+              <label className="title-tracker mt-3">
                 Exit hour
                 <DatePicker
                   selected={finishDate}
@@ -131,7 +140,7 @@ const DateHourPicker = (props) => {
                   className="date-input"
                 />
               </label>
-              <label htmlFor="action" className="title-time">
+              <label htmlFor="action" className="title-tracker">
                 Activity
                 <select
                   className="btn date-input select-action"

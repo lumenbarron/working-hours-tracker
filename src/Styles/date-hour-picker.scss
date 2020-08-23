@@ -1,10 +1,23 @@
 @import './global-styles.scss';
 
+.title-container{
+    @include flexDirection(row);
+}
+
+.title-expected {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: $primaryColor; 
+}
+
 .title-time{
-    font-family: 'Russo One', sans-serif;
-    font-size: 1.8rem;
-    color: $primaryColor;
-    @include flexDirection(column);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: $buttonColors; 
+}
+
+.title-tracker{
+    @include titles($primaryColor, 2rem);
 }
 
 .date-input{

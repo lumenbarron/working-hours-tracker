@@ -19,8 +19,6 @@ export default class App extends Component {
     app.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user : user, userId : user.uid });
-        console.log(user.uid);
-        // console.log(user.displayName);
       } else {
         this.setState({ user: null, userId : '' });
       }
