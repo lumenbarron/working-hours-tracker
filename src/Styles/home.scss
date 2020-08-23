@@ -9,13 +9,12 @@
 }
 
 .button-home{
-    @include buttons ($buttonColors, 300px , 50px)
+    @include buttons ($buttonColors, 300px , 50px, 1.5rem)
 }
 
 .text-container{
     display: flex;
     flex-direction: column;
-    //justify-content: center;
     padding-left: 30px;
 }
 
@@ -32,9 +31,7 @@
     }
 
     .button-home{
-        width: 150px;
-        height: 40px;
-        font-size: 1rem;
+        @include buttons ($buttonColors, 150px , 40px, 1rem);
     }
 
     .text-container{

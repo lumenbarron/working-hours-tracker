@@ -6,11 +6,9 @@
     #f1f6ff 27.63%,
     rgba(241, 246, 255, 0.21) 99.9%
   );
-  //box-shadow: inset -4px -4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 50px;
   box-shadow: 20px 20px 60px #c9ced9, -20px -20px 60px #ffffff;
   width: 650px;
-  //height: 300px;
   @include flexDirection(column)
 }
 
@@ -34,5 +32,18 @@
 }
 
 .button-register{
-    @include buttons ($secondaryColor, 200px , 50px)
+    @include buttons ($secondaryColor, 200px , 50px, 1.5rem)
+}
+
+@media only screen and (max-width: $break-small) {
+
+  .form-input{
+    width: 350px;
+    height: 40px;
+}
+
+.button-register{
+  @include buttons ($secondaryColor, 200px , 40px, 1.2rem)
+}
+
 }

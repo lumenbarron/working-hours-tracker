@@ -2,7 +2,6 @@ import React, { Fragment, useState, useEffect } from "react";
 import app from "../firebase";
 import SignOut from "./SignOutButton";
 import "../Styles/get-date-hour.scss";
-import swal from "sweetalert";
 
 export default function GetDateHour(props) {
   const [data, setData] = useState([]);
@@ -60,7 +59,7 @@ export default function GetDateHour(props) {
     const allTime = data.map((t) => t.time).reduce((a, b) => a + b); //1329 min
     calculateAllTime(allTime);
     //working hours
-    const filterWorkData = data.filter((w) => w.type == "working");
+    const filterWorkData = data.filter((w) => w.type === "working");
     if (filterWorkData.length <= 0) {
       setTotalWorkHours(0);
       setTotalWorkMin(0);
@@ -72,7 +71,7 @@ export default function GetDateHour(props) {
     }
 
     //break hours
-    const filterBreakData = data.filter((w) => w.type == "break");
+    const filterBreakData = data.filter((w) => w.type === "break");
     if (filterBreakData.length <= 0) {
       setTotalBreakHours(0);
       setTotalBreakMin(0);
@@ -142,12 +141,12 @@ export default function GetDateHour(props) {
                     <td>
                       {item.timeHour} hours and {item.timeMin} minutes
                     </td>
-                    <button
+                    {/* <button
                       onClick={() => props.deleteData(item.id)}
                       className="btn btn-danger btn-sm"
                     >
                       Eliminar
-                    </button>
+                    </button> */}
                   </tr>
                 ))}
               </tbody>
@@ -212,7 +211,7 @@ export default function GetDateHour(props) {
           <h3 className="title-time flex-all">No time register</h3>
         </div>
       )}
-      <div className="row sign-out-container">
+      <div className="row sign-out-container m-3">
         <SignOut />
       </div>
     </Fragment>

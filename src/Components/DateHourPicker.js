@@ -54,7 +54,7 @@ const DateHourPicker = (props) => {
     );
   }
 
-  if (hourFinish == hourStart && minuteFinish < minuteStart ) {
+  if (hourFinish === hourStart && minuteFinish < minuteStart ) {
     //18 < 16 because you can't finish after start
     swal(
       "Oops?",
@@ -114,10 +114,10 @@ const DateHourPicker = (props) => {
   return (
     <Fragment>
       <NavLinkHome />
-      <div className="container-fluid container-home">
+      <div className=" margin-top container-fluid">
         <div className="row">
           <div className="col-12 col-lg-5">
-            <form className="mt-5 flex-column" onSubmit={addData}>
+            <form className=" flex-column" onSubmit={addData}>
               <label className="title-tracker">
                 Arriving hour
                 <DatePicker

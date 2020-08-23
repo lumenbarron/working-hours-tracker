@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import app from "../firebase";
+import swal from "sweetalert";
 
 export default class SignOut extends Component {
   signOut = (event) => {
@@ -8,10 +9,11 @@ export default class SignOut extends Component {
       .auth()
       .signOut()
       .then(() => {
+        swal("See you later!", "","success");
         console.log("saliendo");
       })
-      .catch(() => {
-        console.log();
+      .catch((error) => {
+        console.log(error);
       });
   };
 
